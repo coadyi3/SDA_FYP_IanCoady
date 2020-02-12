@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "635729710753",
+    "firebase_url": "https://sda-fyp-iancoady.firebaseio.com",
+    "project_id": "sda-fyp-iancoady",
+    "storage_bucket": "sda-fyp-iancoady.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:635729710753:android:6a408906b154ff5a846ae0",
+        "android_client_info": {
+          "package_name": "dcu.ie.sdaiancoadyfinalproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "635729710753-119bqthf8m5j1pki2iaqmo6t8lm6fsu1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dcu.ie.sdaiancoadyfinalproject",
+            "certificate_hash": "83b34309173439509fe603f08f218122b8b32297"
+          }
+        },
+        {
+          "client_id": "635729710753-06oup4qto8dvss7rh4t7hi4brl5l5smv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUBS1k6nYIKckyyuYIdwTZcRT6pz6QCe8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "635729710753-06oup4qto8dvss7rh4t7hi4brl5l5smv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
