@@ -7,8 +7,6 @@ import android.os.Bundle;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.android.gms.common.SignInButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -72,16 +70,13 @@ public class LoginScreen extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                Intent mainActivity = new Intent(this, MainActivity.class);
+                Intent mainActivity = new Intent(this, DeviceList.class);
                 if (user != null) {
                     startActivity(mainActivity);
                 }
                 // ...
             } else {
-                // Sign in failed. If response is null the user canceled the
-                // sign-in flow using the back button. Otherwise check
-                // response.getError().getErrorCode() and handle the error.
-                // ...
+
             }
         }
     }
