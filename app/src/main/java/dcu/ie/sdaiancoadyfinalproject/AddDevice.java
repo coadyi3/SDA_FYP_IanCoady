@@ -1,5 +1,6 @@
 package dcu.ie.sdaiancoadyfinalproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -75,12 +76,14 @@ public class AddDevice extends AppCompatActivity {
 
                                     Map<String, Object> deviceDetails = new HashMap<>();
                                     deviceDetails.put("DevModel", devModelSpinner.getSelectedItem().toString());
-                                    deviceDetails.put("DevEnv", devEnvSpinner.getSelectedItem()).toString();
+                                    deviceDetails.put("DevEnv", devEnvSpinner.getSelectedItem().toString());
                                     deviceDetails.put("DevActivationDate", currentDate);
 
                                     deviceList.document(serialNum).set(deviceDetails);
 
                                     Toast.makeText(getApplicationContext(), "Device created!", Toast.LENGTH_SHORT).show();
+                                    Intent returnToList = new Intent(getApplicationContext(), DeviceList.class);
+                                    startActivity(returnToList);
 
                                 }
                             }

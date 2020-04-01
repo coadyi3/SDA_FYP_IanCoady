@@ -1,16 +1,16 @@
 <resources>
 
     <string-array name="device_entries">
-        <item>" PAX S500 "</item>
-        <item>" PAX S300 "</item>
-        <item>" PAX A920 "</item>
-        <item>" PAX D210 "</item>
-        <item>" Ingenico Desk 3500 "</item>
-        <item>" Ingenico Desk 2500 "</item>
-        <item>" Ingenico Tetra "</item>
-        <item>" SREDKey "</item>
-        <item>" WisePad 2 "</item>
-        <item>" Miura M010 "</item>
+        <item>"PAX S500"</item>
+        <item>"PAX S300"</item>
+        <item>"PAX A920"</item>
+        <item>"PAX D210"</item>
+        <item>"Ingenico Desk 3500"</item>
+        <item>"Ingenico Desk 2500"</item>
+        <item>"Ingenico Tetra"</item>
+        <item>"SREDKey"</item>
+        <item>"WisePad 2" </item>
+        <item>"Miura M010"</item>
     </string-array>
 
     <string-array name="environments">
