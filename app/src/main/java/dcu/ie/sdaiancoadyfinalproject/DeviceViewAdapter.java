@@ -1,8 +1,11 @@
 package dcu.ie.sdaiancoadyfinalproject;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,8 +34,9 @@ public class DeviceViewAdapter extends RecyclerView.Adapter<DeviceViewAdapter.Vi
         return new ViewHolder(view);
     }
 
+
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
         holder.deviceSN             .setText(deviceID.get(position).toString());
         holder.deviceModel          .setText(deviceModel.get(position));
@@ -41,7 +45,10 @@ public class DeviceViewAdapter extends RecyclerView.Adapter<DeviceViewAdapter.Vi
         holder.editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent editDevice = new Intent(dNewContext, EditDevice.class);
+                editDevice.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                editDevice.putExtra("Serial", deviceID.get(position));
+                dNewContext.startActivity(editDevice);
             }
         });
     }

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,7 +39,7 @@ public class AddDevice extends AppCompatActivity {
         deviceDb = FirebaseFirestore.getInstance();
         final CollectionReference deviceList = deviceDb.collection("Devices");
 
-        deviceSerial = findViewById(R.id.serialNumber);
+        deviceSerial = findViewById(R.id.editDevSerial);
         addDeviceBtn = findViewById(R.id.button);
         devModelSpinner = findViewById(R.id.spinnerDevType);
         devEnvSpinner = findViewById(R.id.spinnerDevEnv);
