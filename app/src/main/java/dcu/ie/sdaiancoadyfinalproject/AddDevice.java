@@ -53,7 +53,8 @@ public class AddDevice extends AppCompatActivity {
         addDeviceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int serial = Integer.parseInt(deviceSerial.getText().toString());
+                int serial;
+                serial = Integer.parseInt(deviceSerial.getText().toString());
                 final String serialNum = deviceSerial.getText().toString();
 
                 if (serial < 11111111 || serial > 99999999) {
