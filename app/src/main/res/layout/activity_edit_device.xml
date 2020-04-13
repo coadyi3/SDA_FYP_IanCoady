@@ -24,7 +24,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo"
+        android:contentDescription="@string/logo_desc" />
 
     <EditText
         android:id="@+id/editDevSerial"
@@ -33,7 +34,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
-        android:hint="8 Digit Device Serial Number"
+        android:hint="@string/serial_hint"
         android:imeOptions="actionDone"
         android:inputType="number"
         android:maxLength="8"
@@ -51,7 +52,7 @@
         android:layout_height="22dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:text="Device Type: "
+        android:text="@string/model_device"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDevSerial" />
@@ -62,7 +63,7 @@
         android:layout_height="22dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:text="Device Activation Date:  "
+        android:text="@string/device_activation_date"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDevEnv" />
@@ -73,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:text="Device Environment:"
+        android:text="@string/environment_device"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDevType" />
@@ -85,7 +86,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="32dp"
         android:onClick="saveButton"
-        android:text="Save"
+        android:text="@string/save"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDevDate" />
 
@@ -96,7 +97,7 @@
         android:layout_marginStart="108dp"
         android:layout_marginTop="32dp"
         android:onClick="deleteButton"
-        android:text="Delete"
+        android:text="@string/delete"
         app:layout_constraintStart_toEndOf="@+id/saveBtn"
         app:layout_constraintTop_toBottomOf="@+id/editDevDate" />
 
@@ -106,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="Edit Device"
+        android:text="@string/edit_device_header"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:textStyle="bold|italic"

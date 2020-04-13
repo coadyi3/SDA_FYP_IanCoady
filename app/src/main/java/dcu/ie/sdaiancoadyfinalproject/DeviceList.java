@@ -42,7 +42,7 @@ public class DeviceList extends AppCompatActivity {
         final ArrayList<String> dDeviceModel = new ArrayList<>();
         final ArrayList<String> dDeviceEnv = new ArrayList<>();
 
-        dFireStore.collection("Devices")
+        dFireStore.collection(getString(R.string.dev_path))
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

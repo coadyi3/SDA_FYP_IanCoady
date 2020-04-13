@@ -35,18 +35,21 @@ public class AddDevice extends AppCompatActivity {
     protected void onCreate(Bundle SavedInstanceState) {
         super.onCreate(SavedInstanceState);
         setContentView(R.layout.activity_add_device);
-
         deviceDb = FirebaseFirestore.getInstance();
-        final CollectionReference deviceList = deviceDb.collection("Devices");
 
-        deviceSerial = findViewById(R.id.editDevSerial);
-        addDeviceBtn = findViewById(R.id.button);
-        devModelSpinner = findViewById(R.id.spinnerDevType);
-        devEnvSpinner = findViewById(R.id.spinnerDevEnv);
+        final CollectionReference deviceList = deviceDb.collection(getString(R.string.dev_path));
+
+        deviceSerial        = findViewById(R.id.editDevSerial);
+        addDeviceBtn        = findViewById(R.id.button);
+        devModelSpinner     = findViewById(R.id.spinnerDevType);
+        devEnvSpinner       = findViewById(R.id.spinnerDevEnv);
+
         ArrayAdapter<CharSequence> modelAdapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.device_entries, R.layout.spinner);
-        ArrayAdapter<CharSequence> envAdapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.environments, R.layout.spinner);
+        ArrayAdapter<CharSequence> envAdapter   = ArrayAdapter.createFromResource(getApplicationContext(), R.array.environments, R.layout.spinner);
+
         devEnvSpinner.setAdapter(envAdapter);
         devEnvSpinner.setEnabled(true);
+
         devModelSpinner.setAdapter(modelAdapter);
         devModelSpinner.setEnabled(true);
 
@@ -57,23 +60,23 @@ public class AddDevice extends AppCompatActivity {
                 final String serialNum = deviceSerial.getText().toString();
 
                 if(serialNum.equals("")) {
-                    Toast.makeText(getApplicationContext(), "Serial Number incompatible: Try Again", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.serial_toast_error, Toast.LENGTH_SHORT).show();
                 }
                 else{
                     serial = Integer.parseInt(serialNum);
                 }
 
                 if (serial < 11111111 || serial > 99999999) {
-                    Toast.makeText(getApplicationContext(), "Serial Number incompatible: Try Again", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.serial_toast_error, Toast.LENGTH_SHORT).show();
                 } else {
-                    DocumentReference docRef = deviceDb.collection("Devices").document(serialNum);
+                    DocumentReference docRef = deviceDb.collection(getString(R.string.dev_path)).document(serialNum);
                     docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if (task.isSuccessful()) {
                                 DocumentSnapshot snap = task.getResult();
                                 if (snap.exists()) {
-                                    Toast.makeText(getApplicationContext(), "Device already exists!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), R.string.dev_exists_error, Toast.LENGTH_SHORT).show();
                                 }
 
                                 else {
@@ -87,7 +90,7 @@ public class AddDevice extends AppCompatActivity {
 
                                     deviceList.document(serialNum).set(deviceDetails);
 
-                                    Toast.makeText(getApplicationContext(), "Device created!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), R.string.dev_created, Toast.LENGTH_SHORT).show();
                                     Intent returnToList = new Intent(getApplicationContext(), DeviceList.class);
                                     startActivity(returnToList);
 

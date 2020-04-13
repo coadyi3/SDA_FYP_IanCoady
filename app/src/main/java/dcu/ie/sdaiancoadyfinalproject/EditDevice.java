@@ -40,12 +40,13 @@ public class EditDevice extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_device);
 
-        deviceDb = FirebaseFirestore.getInstance();
+        deviceDb    = FirebaseFirestore.getInstance();
 
         dSerial     = findViewById(R.id.editDevSerial);
         dModel      = findViewById(R.id.editDevType);
         dEnv        = findViewById(R.id.editDevEnv);
         dActive     = findViewById(R.id.editDevDate);
+
         Bundle extras = getIntent().getExtras();
 
         if(extras != null){
@@ -54,21 +55,22 @@ public class EditDevice extends AppCompatActivity {
             dSerial.setText(String.valueOf(serialNumber));
         }
 
-        DocumentReference deviceDetails = deviceDb.collection("Devices").document(String.valueOf(serialNumber));
+        DocumentReference deviceDetails = deviceDb.collection(getString(R.string.dev_path)).document(String.valueOf(serialNumber));
         deviceDetails.get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if(task.isSuccessful()){
                             DocumentSnapshot snap = task.getResult();
+                            assert snap != null;
                             if(snap.exists()){
                                model         = snap.get("DevModel").toString();
                                environment   = snap.get("DevEnv").toString();
                                activeDate    = snap.get("DevActivationDate").toString();
 
-                               dModel       .setText("Device Type: "+model);
-                               dEnv         .setText("Device Environment: "+environment);
-                               dActive      .setText("Active Since: " +activeDate);
+                               dModel       .setText(String.format(getString(R.string.devType), model));
+                               dEnv         .setText(String.format(getString(R.string.devEnv), environment));
+                               dActive      .setText(String.format(getString(R.string.devActive), activeDate));
 
                             }
                         }
@@ -77,7 +79,7 @@ public class EditDevice extends AppCompatActivity {
                             Log.i(TAG,"Device Not found");
                             Intent returnToHome = new Intent(getApplicationContext(),DeviceList.class);
                             startActivity(returnToHome);
-                            Toast.makeText(getApplicationContext(),"Error: Device not logged in database", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), R.string.db_error, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -87,7 +89,7 @@ public class EditDevice extends AppCompatActivity {
     }
 
     public void deleteButton(View v){
-        deviceDb.collection("Devices").document(String.valueOf(serialNumber))
+        deviceDb.collection(getString(R.string.dev_path)).document(String.valueOf(serialNumber))
             .delete()
             .addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
@@ -117,16 +119,16 @@ public class EditDevice extends AppCompatActivity {
         }
 
         if (serialNumber < 11111111 || serialNumber > 99999999) {
-            Toast.makeText(getApplicationContext(), "Serial Number incompatible: Try Again", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.serial_toast_error, Toast.LENGTH_SHORT).show();
         } else {
-            DocumentReference docRef = deviceDb.collection("Devices").document(String.valueOf(serialNumber));
+            DocumentReference docRef = deviceDb.collection(getString(R.string.dev_path)).document(String.valueOf(serialNumber));
             docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                     if (task.isSuccessful()) {
                         DocumentSnapshot snap = task.getResult();
                         if (snap.exists()) {
-                            Toast.makeText(getApplicationContext(), "Device already exists!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), R.string.dev_exists_error, Toast.LENGTH_SHORT).show();
                         }
 
                         else {
@@ -136,9 +138,9 @@ public class EditDevice extends AppCompatActivity {
                             deviceDetails.put("DevEnv", environment);
                             deviceDetails.put("DevActivationDate", activeDate);
 
-                            deviceDb.collection("Devices").document(String.valueOf(serialNumber)).set(deviceDetails);
+                            deviceDb.collection(getString(R.string.dev_path)).document(String.valueOf(serialNumber)).set(deviceDetails);
 
-                            Toast.makeText(getApplicationContext(), "Device Edited!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), R.string.dev_edited, Toast.LENGTH_SHORT).show();
                             deleteButton(v);
                         }
                     }

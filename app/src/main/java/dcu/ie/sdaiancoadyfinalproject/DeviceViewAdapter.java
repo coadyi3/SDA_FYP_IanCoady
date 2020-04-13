@@ -15,16 +15,16 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class DeviceViewAdapter extends RecyclerView.Adapter<DeviceViewAdapter.ViewHolder> {
-    private Context dNewContext;
-    private ArrayList<Integer> deviceID;
-    private ArrayList<String> deviceModel;
-    private ArrayList<String> environmentType;
+    private Context             dNewContext;
+    private ArrayList<Integer>  deviceID;
+    private ArrayList<String>   deviceModel;
+    private ArrayList<String>   environmentType;
 
     DeviceViewAdapter(Context dNewContext, ArrayList<Integer> id, ArrayList<String> model, ArrayList<String> environment){
-        this.dNewContext = dNewContext;
-        this.deviceID = id;
-        this.deviceModel = model;
-        this.environmentType = environment;
+        this.dNewContext        = dNewContext;
+        this.deviceID           = id;
+        this.deviceModel        = model;
+        this.environmentType    = environment;
     }
 
     @NonNull
@@ -38,7 +38,7 @@ public class DeviceViewAdapter extends RecyclerView.Adapter<DeviceViewAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
-        holder.deviceSN             .setText(deviceID.get(position).toString());
+        holder.deviceSN             .setText(String.valueOf(deviceID.get(position)));
         holder.deviceModel          .setText(deviceModel.get(position));
         holder.deviceEnvironment    .setText(environmentType.get(position));
 
@@ -62,11 +62,11 @@ public class DeviceViewAdapter extends RecyclerView.Adapter<DeviceViewAdapter.Vi
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView deviceSN;
-        TextView deviceModel;
-        TextView deviceEnvironment;
-        Button editBtn;
-        RelativeLayout parentItemLayout;
+        TextView        deviceSN;
+        TextView        deviceModel;
+        TextView        deviceEnvironment;
+        Button          editBtn;
+        RelativeLayout  parentItemLayout;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);

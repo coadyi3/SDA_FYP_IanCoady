@@ -24,7 +24,8 @@
         android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
         app:layout_constraintEnd_toEndOf="@+id/toolbar2"
-        app:layout_constraintTop_toTopOf="@+id/toolbar2" />
+        app:layout_constraintTop_toTopOf="@+id/toolbar2"
+        android:contentDescription="@string/logo_desc" />
 
     <TextView
         android:id="@+id/header3"
@@ -32,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="Add Device"
+        android:text="@string/add_device_header"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:textStyle="bold|italic"
@@ -46,7 +47,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:hint="8 Digit Device Serial Number"
+        android:hint="@string/serial_hint"
         android:imeOptions="actionDone"
         android:inputType="number"
         android:maxLength="8"
@@ -81,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:text="Device Type"
+        android:text="@string/device_type_header"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDevSerial" />
@@ -92,7 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
-        android:text="Device Environment Location"
+        android:text="@string/dev_env_header"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -104,7 +105,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:text="Add Device"
+        android:text="@string/add_device"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
