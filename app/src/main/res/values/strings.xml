@@ -23,7 +23,7 @@
     <string name="app_name">SDA_2020_IanCoady_FinalProject</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_login_screen">Bluefin Payment Systems Login</string>
-    <string name="welcom">Welcome</string>
+    <string name="welcom">P2Pe Manager Mobile</string>
     <string name="supports_google_note">This app only supports Google Sign-In.</string>
     <string name="sign_out">Sign Out</string>
 </resources>

@@ -127,7 +127,9 @@ public class EditDevice extends AppCompatActivity {
                         DocumentSnapshot snap = task.getResult();
                         if (snap.exists()) {
                             Toast.makeText(getApplicationContext(), "Device already exists!", Toast.LENGTH_SHORT).show();
-                        } else {
+                        }
+
+                        else {
 
                             Map<String, Object> deviceDetails = new HashMap<>();
                             deviceDetails.put("DevModel", model);
