@@ -93,7 +93,6 @@ public class EditDevice extends AppCompatActivity {
                 @Override
                 public void onSuccess(Void aVoid) {
                     Log.i(TAG, "onSuccess: Device Deleted");
-                    Toast.makeText(getApplicationContext(),"Device Deleted", Toast.LENGTH_SHORT).show();
                     Intent returnToHome = new Intent(getApplicationContext(), DeviceList.class);
                     startActivity(returnToHome);
                 }
@@ -106,11 +105,16 @@ public class EditDevice extends AppCompatActivity {
             });
     }
 
-    public void saveButton(View v) {
+    public void saveButton(final View v) {
 
-        deleteButton(v);
+        final String serialNum = dSerial.getText().toString();
 
-        serialNumber = Integer.parseInt(dSerial.getText().toString());
+        if(serialNum.equals("")) {
+            serialNumber = 0;
+        }
+        else{
+            serialNumber = Integer.parseInt(serialNum);
+        }
 
         if (serialNumber < 11111111 || serialNumber > 99999999) {
             Toast.makeText(getApplicationContext(), "Serial Number incompatible: Try Again", Toast.LENGTH_SHORT).show();
@@ -132,7 +136,8 @@ public class EditDevice extends AppCompatActivity {
 
                             deviceDb.collection("Devices").document(String.valueOf(serialNumber)).set(deviceDetails);
 
-                            Toast.makeText(getApplicationContext(), "Device created!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Device Edited!", Toast.LENGTH_SHORT).show();
+                            deleteButton(v);
                         }
                     }
                 }
