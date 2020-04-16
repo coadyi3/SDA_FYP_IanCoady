@@ -1,4 +1,4 @@
-# SDA_FYP_IanCoady
+# SDA_FYP_IanCoady - The P2pe Manager Mobile v1.0
 
 This Repo is the Final Year Project Submission for the SDA Module in DCU's Higher Diploma in Software Development.
 
